@@ -1,0 +1,54 @@
+name: Feature request
+description: Suggest a workflow the viewer should support.
+title: "[Feature] "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Describe the workflow, not only the button. A screenshot of the current limitation helps.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: What are you trying to do?
+      description: The task and where the current viewer gets in the way.
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: What would you like to happen?
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives you considered
+      description: Existing shortcuts, the wheel modes, another plugin, or doing it outside DSH.
+
+  - type: dropdown
+    id: scope
+    attributes:
+      label: Which part does this touch?
+      multiple: true
+      options:
+        - Zoom / pan behaviour
+        - Download naming or file handling
+        - Open original / clipboard / actions
+        - Gallery navigation
+        - Accessibility / keyboard
+        - Marketplace / docs
+        - Other
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checklist
+      options:
+        - label: This is about images shown by DSH (not PDF, video, or HTML artifacts).
+          required: true
+        - label: I searched existing issues and the README first.
+          required: true

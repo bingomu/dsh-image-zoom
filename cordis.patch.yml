@@ -1,0 +1,8 @@
+# 图片缩放查看器：一个纯客户端 UI 插件。
+#
+# 这个 Loader 行本身指向包根（index.js 的 apply 为空）；浏览器半侧由
+# package.json 的 dsh.client 声明，Web 端把 client.js 注册进模块表后执行它的 apply，
+# 由 apply 安装全局图片点击拦截 + 自绘弹层。
+- insert:
+    - id: image-zoom
+      name: 'dsh-image-zoom'

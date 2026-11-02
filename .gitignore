@@ -1,0 +1,7 @@
+node_modules/
+tests/.chrome-profile/
+tests/downloads/
+tests/shots/
+.DS_Store
+npm-debug.log*
+.npm/

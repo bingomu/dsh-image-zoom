@@ -1,0 +1,90 @@
+PASS  plugin applied and viewer closed
+PASS  style injected
+PASS  click a content image opens the viewer
+PASS  dialog is modal and labelled
+PASS  gallery collected content images only  — gallery=5
+PASS  opens on the clicked image (first)  — pos=1 / 5
+PASS  opens fitted and centred  — scale=0.85 fit=0.85
+PASS  percent readout matches scale
+PASS  CSS transform matches state (matrix)
+PASS  download name = alt + timestamp + format extension  — 星港-个人知识库架构图-20261101-194207.png
+PASS  download name strips characters Windows forbids  — a-b-c-spaces-20261101-194207.png
+PASS  download name protects Windows reserved names  — CON_-20261101-194207.png
+PASS  download name truncates very long descriptions  — 这是一个非常非常长的图片说明文字这是一个非常非常长的图片说明文字这是一个非常非常长的图片说明文字-20261101-194207.png
+PASS  blob image without alt falls back to localized name  — 图片-20261101-194207.webp
+PASS  meaningful source filename is kept  — starport-architecture-20261101-194207.png
+PASS  generic source filename is replaced  — 图片-20261101-194207.png
+PASS  extension follows detected format  — 图片-20261101-194207.jpg | icon-20261101-194207.svg
+PASS  link is shareable only for absolute http(s), not blob/data  — {"shareable":true,"blob":false,"data":false}
+PASS  local path is read from the workspace file route  — /tmp/starport-architecture.png
+PASS  file: URLs keep their path (including Windows drive letters)  — {"api":"/tmp/starport-architecture.png","file":"/tmp/a b.png","win":"C:/images/a.png"}
+PASS  blob/data/remote sources have no local path
+PASS  header exposes download / copy / link / open / close  — ["download","copy","link","open","close"]
+PASS  copy-link is hidden for a blob/data image
+PASS  open tooltip explains a path-less attachment  — 这类图片没有本地路径：可下载原图或复制图片
+PASS  download tooltip previews the generated filename  — 下载原图（WIDE-test-image-20261101-225905.svg）
+PASS  download lands with the generated filename  — WIDE-test-image-20261101-225905.svg
+PASS  mouse wheel zooms in  — 0.850 → 1.030
+PASS  each mouse notch keeps zooming (no pan switch)  — 1.030 → 1.248
+PASS  a wheel burst keeps zooming  — → 1.832
+PASS  typed percentage zooms to 200%  — pct=200 scale=2
+PASS  two-finger vertical scroll pans vertically  — ty 0.6 → -71.4
+PASS  two-finger horizontal scroll pans horizontally  — tx 0.0 → -24.0
+PASS  diagonal two-finger scroll pans both axes  — Δtx=-7.0 Δty=-11.0
+PASS  Shift+wheel pans sideways  — tx -31.0 → -151.0
+PASS  ctrl+wheel (trackpad pinch) zooms in  — 2.000 → 2.167
+PASS  drag pans both axes  — Δtx=110.0 Δty=90.0
+PASS  key 0 fits to window  — scale=0.850 fit=0.850
+PASS  CSS matrix follows fit
+PASS  key 1 goes to actual size  — scale=1
+PASS  key + zooms (25%)  — scale=1.25
+PASS  key - zooms out (25%)  — scale=1
+PASS  arrow right moves to next image  — index=1
+PASS  neighbour is preloaded and shown
+PASS  arrow left moves back  — index=0
+PASS  key r rotates 90° clockwise  — rot=90 deg=90°
+PASS  rotation reaches the CSS matrix  — a=0.000 b=0.850
+PASS  Shift+R rotates back  — rot=0
+PASS  double-click toggles fit → actual  — scale=1
+PASS  double-click toggles actual → fit  — scale=0.85 fit=0.85
+PASS  typed percentage clamps to 4000%  — pct=4000 scale=40
+PASS  wheel mode exposes three explicit options
+PASS  choosing 缩放 forces wheel zoom  — mode=zoom
+PASS  choosing 平移 forces wheel pan  — mode=pan
+PASS  choosing 自动 restores the heuristic  — mode=auto
+PASS  Space is swallowed while the viewer is open  — {"key":" ","prevented":true,"target":"diz-panel"}
+PASS  PageDown is swallowed while the viewer is open  — {"key":"PageDown","prevented":true,"target":"diz-panel"}
+PASS  horizontal-only wheel at fit does not zoom  — scale 0.850→0.850
+PASS  vertical wheel after that still zooms  — 0.850→0.866
+PASS  the workspace file route exposes its filesystem path  — /tmp/starport-architecture.png
+PASS  open-original hands the local path to the Host default-app opener  — /tmp/starport-architecture.png
+PASS  open-original confirms with a toast  — 已用默认应用打开原图
+PASS  open-original tooltip names the default app  — 用系统默认应用打开原图
+PASS  unavailable default-app opener explains instead of downloading  — 当前环境不支持用默认应用打开本地图片
+PASS  no host call and no download when the opener is unavailable
+PASS  an attachment without a path explains the alternative  — 这类图片没有本地路径：可下载原图或复制图片
+PASS  no silent download for a path-less attachment
+PASS  mode switch toast stays short  — 滚轮口径：平移
+PASS  Windows notch (deltaY=100) zooms at once  — 0.850 → 0.997
+PASS  Chrome notch (deltaY=120) zooms at once  — 0.850 → 1.030
+PASS  precise mouse (small isolated delta) zooms after the 75ms defer  — 0.850 → 0.866
+PASS  trackpad stream pans without zooming  — scale 2.000→2.000, ty 0.0→-96.0
+PASS  scroll stream at fit falls back to zoom  — 0.850 → 0.966
+PASS  download / copy / open / close actions present
+PASS  off-origin http(s) image shows the copy-link action  — {"open":true,"linkHidden":false,"openTitle":"打开原图（新窗口 / 系统浏览器）"}
+PASS  open-original button says it opens a new window  — 打开原图（新窗口 / 系统浏览器）
+PASS  Esc closes the viewer
+PASS  icon-sized image is left alone
+PASS  image inside a link keeps navigation
+PASS  re-open works
+PASS  clicking the backdrop closes
+PASS  a broken image shows the inline error state  — {"open":true,"error":true}
+PASS  the loading bubble is hidden after an error
+PASS  metadata names the failure
+PASS  an SVG without intrinsic size still gets a usable box  — {"open":true,"width":"225px","height":"150px","pct":100,"error":false}
+PASS  uninstall removes overlay and style  — {"root":false,"style":false}
+PASS  after uninstall clicks are no longer captured
+PASS  Space passes through when the viewer is closed  — {"key":" ","prevented":false}
+PASS  no console errors during the run
+
+88/88 checks passed

@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<title>dsh-image-zoom · harness</title>
+<style>
+  html, body { margin: 0; height: 100%; }
+  body { font: 13px -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif; background: #faf8f4; }
+  [data-conversation-scroll] { position: absolute; inset: 0; overflow: auto; padding: 20px; }
+  .row { display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-start; }
+  figure { margin: 0; }
+  figcaption { font-size: 12px; color: #6b6660; margin-top: 4px; }
+  img { display: block; border: 1px solid #ddd; background: #fff; }
+  .small { width: 24px; height: 24px; }
+</style>
+</head>
+<body>
+<div data-conversation-scroll id="conv"><div class="row" id="row"></div><div style="height:1400px"></div></div>
+<div id="fixtures"></div>
+<script>
+  // Stand-in for the DSH client module loader: capture the factory, materialise it.
+  window.__DIZ_TEST_HOOKS__ = true
+  window.__ModuleLoader__ = {
+    load(entry) {
+      window.__PLUGIN_ENTRY__ = entry
+      window.__PLUGIN__ = entry.factory(() => ({}))
+    },
+  }
+
+  function svgDataUrl(w, h, label, hue) {
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}">
+      <rect width="${w}" height="${h}" fill="hsl(${hue},46%,94%)"/>
+      <rect x="24" y="24" width="${w - 48}" height="${h - 48}" fill="none" stroke="hsl(${hue},40%,42%)" stroke-width="4" stroke-dasharray="14 10"/>
+      <circle cx="${w / 2}" cy="${h / 2}" r="${Math.min(w, h) / 5}" fill="hsl(${hue},52%,62%)" opacity="0.75"/>
+      <text x="${w / 2}" y="${h / 2 + 6}" text-anchor="middle" font-family="sans-serif" font-size="${Math.min(w, h) / 12}" fill="#2b2620">${label}</text>
+      <text x="32" y="${h - 36}" font-family="sans-serif" font-size="26" fill="#6b6660">${w} × ${h}</text>
+    </svg>`
+    return 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg)
+  }
+
+  window.__LAST_KEY__ = null
+  document.addEventListener('keydown', event => {
+    window.__LAST_KEY__ = { key: event.key, prevented: event.defaultPrevented }
+  }, false)
+
+  const specs = [
+    { id: 'wide', w: 1200, h: 800, label: 'WIDE', hue: 18, css: 'width:520px;height:auto' },
+    { id: 'tall', w: 900, h: 1300, label: 'TALL', hue: 150, css: 'width:300px;height:auto' },
+    { id: 'square', w: 640, h: 640, label: 'SQUARE', hue: 220, css: 'width:260px;height:auto' },
+  ]
+  const row = document.getElementById('row')
+  for (const spec of specs) {
+    const fig = document.createElement('figure')
+    const img = document.createElement('img')
+    img.id = spec.id
+    img.alt = spec.label + ' test image'
+    img.src = svgDataUrl(spec.w, spec.h, spec.label, spec.hue)
+    img.setAttribute('style', spec.css)
+    const cap = document.createElement('figcaption')
+    cap.textContent = spec.label
+    fig.append(img, cap)
+    row.append(fig)
+  }
+
+  // An icon-sized image that the viewer must ignore.
+  const icon = document.createElement('img')
+  icon.id = 'icon'
+  icon.className = 'small'
+  icon.alt = 'icon'
+  icon.src = svgDataUrl(64, 64, 'I', 280)
+  row.append(icon)
+
+  // A broken remote image (absolute https URL): the viewer must offer "copy link" for it.
+  const remote = document.createElement('img')
+  remote.id = 'remote'
+  remote.alt = 'remote image'
+  remote.src = 'https://example.invalid/remote.png'
+  remote.setAttribute('style', 'width:120px;height:80px')
+  row.append(remote)
+
+  // A Markdown-style link wrapped image: navigation must win, viewer must not open.
+  const anchor = document.createElement('a')
+  anchor.href = '#linked'
+  anchor.id = 'linkwrap'
+  const linked = document.createElement('img')
+  linked.id = 'linkedimg'
+  linked.alt = 'linked image'
+  linked.src = svgDataUrl(800, 500, 'LINKED', 300)
+  linked.setAttribute('style', 'width:320px;height:auto')
+  anchor.append(linked)
+  row.append(anchor)
+</script>
+<script src="../client.js"></script>
+<script>
+  // Fixtures for edge cases, kept outside the conversation so the gallery count is unchanged.
+  const fixtures = document.getElementById('fixtures')
+  const broken = document.createElement('img')
+  broken.id = 'broken'
+  broken.alt = 'broken image'
+  broken.src = 'data:image/png;base64,AAAA'
+  broken.setAttribute('style', 'width:200px;height:120px')
+  fixtures.append(broken)
+
+  const noSizeSvg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600">' +
+    '<rect width="900" height="600" fill="#dfe8f5"/><circle cx="450" cy="300" r="180" fill="#7f9fd0"/></svg>'
+  // An image served through the app's workspace file route: the viewer should
+  // hand its path to the Host's default-app opener instead of window.open.
+  const localFile = document.createElement('img')
+  localFile.id = 'localimg'
+  localFile.alt = 'local workspace image'
+  localFile.src = '/api/file?path=' + encodeURIComponent('/tmp/starport-architecture.png')
+  localFile.setAttribute('style', 'width:180px;height:120px')
+  fixtures.append(localFile)
+
+  const noSize = document.createElement('img')
+  noSize.id = 'nosize'
+  noSize.alt = 'no intrinsic size'
+  noSize.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(noSizeSvg)
+  noSize.setAttribute('style', 'width:300px;height:auto')
+  fixtures.append(noSize)
+
+  window.__PLUGIN__
+    .apply({
+      effect(fn) {
+        const dispose = fn()
+        window.__CLEANUP__ = dispose
+      },
+    })
+  window.__APPLIED__ = true
+</script>
+</body>
+</html>

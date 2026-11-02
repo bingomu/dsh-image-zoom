@@ -1,0 +1,72 @@
+{
+  "name": "dsh-image-zoom",
+  "version": "1.0.1",
+  "description": "In-chat image viewer for DeepSeek Harness: wheel and trackpad-pinch zoom at the pointer, two-finger and drag panning, gallery browsing, auto-named downloads, and open-with-default-app for workspace images.",
+  "type": "module",
+  "main": "index.js",
+  "license": "MIT",
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "image-viewer",
+    "zoom",
+    "pan",
+    "trackpad",
+    "lightbox",
+    "artifact",
+    "screenshot"
+  ],
+  "exports": {
+    ".": "./index.js",
+    "./client": "./client.js",
+    "./icon": "./icon.svg",
+    "./locale/*.json": "./locale/*.json",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "index.js",
+    "client.js",
+    "cordis.patch.yml",
+    "icon.svg",
+    "README.md",
+    "README.zh.md",
+    "CHANGELOG.md",
+    "LICENSE",
+    "locale/*.json"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true
+    }
+  },
+  "engines": {
+    "node": ">=22",
+    "dsh": ">=0.2.1-rc.2 <0.3.0-0"
+  },
+  "author": {
+    "name": "Genzo",
+    "email": "robinham@gmail.com",
+    "url": "https://x.com/robinham"
+  },
+  "homepage": "https://github.com/bingomu/dsh-image-zoom#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bingomu/dsh-image-zoom.git"
+  },
+  "bugs": {
+    "url": "https://github.com/bingomu/dsh-image-zoom/issues"
+  },
+  "icon": "./icon.svg",
+  "scripts": {
+    "test": "node tests/run-e2e.mjs",
+    "check": "node --check client.js && node --check index.js"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

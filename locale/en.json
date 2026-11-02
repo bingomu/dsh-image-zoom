@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Image Zoom Viewer",
+    "description": "Takes over content images: pointer-anchored wheel zoom, trackpad pinch zoom, two-finger scroll to pan on both axes, drag to pan, double-click fit/actual, gallery browsing, download, copy and rotate."
+  }
+}

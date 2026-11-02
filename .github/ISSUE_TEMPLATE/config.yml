@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Support and usage questions
+    url: https://github.com/bingomu/dsh-image-zoom/blob/main/SUPPORT.md
+    about: Read this before opening a question — it lists what to include and what is out of scope.
+  - name: Security report
+    url: https://github.com/bingomu/dsh-image-zoom/security/advisories/new
+    about: Report vulnerabilities privately. Never open a public issue for a security problem.
+  - name: Marketplace listing problem
+    url: https://github.com/awesome-dsh-plugin/awesome-dsh-plugin/issues
+    about: Broken install, wrong category or stale screenshots in the DSH plugin market.
