@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://github.com/bingomu/dsh-image-zoom">
-    <img src="assets/banner.png" alt="dsh-image-zoom — image viewer for DeepSeek Harness" width="100%">
+    <img src="assets/banner.en.png" alt="dsh-image-zoom — image viewer for DeepSeek Harness" width="100%">
   </a>
 </p>
 
@@ -16,7 +16,7 @@
 
 English | [中文](README.zh.md)
 
-![Opening a diagram in the viewer](assets/screenshots/01-overview.png)
+![Opening a diagram in the viewer](assets/screenshots/en/01-overview.png)
 
 ## Why this plugin
 
@@ -31,9 +31,9 @@ The built-in image preview is a step up from a raw `<img>`, but it is not a view
 | Flip through screenshots | `←`/`→` or the side chevrons; `3 / 7` in the footer. |
 | Keep the file | Download with a generated name, copy the image, copy an external image link, or open a workspace original in the system default app. |
 
-![Detail at 260%](assets/screenshots/02-detail.png)
-![Download with a generated filename](assets/screenshots/03-download.png)
-![Gallery browsing](assets/screenshots/04-gallery.png)
+![Detail at 260%](assets/screenshots/en/02-detail.png)
+![Download with a generated filename](assets/screenshots/en/03-download.png)
+![Gallery browsing](assets/screenshots/en/04-gallery.png)
 
 ## Install
 

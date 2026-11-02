@@ -64,7 +64,8 @@ Email is published as a **fallback** for security reports and private matters, n
 - **Tagline (EN):** A real image viewer for DeepSeek Harness.
 - **Tagline (ZH):** 给 DeepSeek Harness 的图片查看器。
 - **Colours:** ink `#1A1917`, paper `#F7F2E9`, rust accent `#A4552F`.
-- **Assets:** `assets/icon-180.png` / `assets/icon-512.png` (marketplace + repo), `assets/icon.svg` (plugin manager), `assets/banner.png` (README/social), `assets/screenshots/01…04.png` (storefront order).
+- **Assets:** `assets/icon-180.png` / `assets/icon-512.png` (marketplace + repo), `assets/icon.svg` (plugin manager).
+- **Language sets:** `assets/banner.png` + `assets/screenshots/01…04.png` (Chinese README); `assets/banner.en.png` + `assets/screenshots/en/01…04.png` (English README and the first four storefront images); `assets/social-preview.png` / `assets/social-preview.en.png` for the GitHub card (uploaded manually).
 - **Tone:** describe what the plugin does, with no superlatives or marketing claims. Marketplace reviewers check every sentence against the code; an inaccurate description is the usual reason a submission is sent back.
 - **Screenshots:** 16:10, 1600×1000, dark theme, real DSH UI, no fake windows. `screenshots.json` lists them in storefront order.
 

@@ -35,6 +35,8 @@ DSH 自带的图片预览解决了「能点开」，但还称不上查看器：�
 ![下载时自动命名](assets/screenshots/03-download.png)
 ![图集切换](assets/screenshots/04-gallery.png)
 
+<sub>英文版截图与横幅见 [README.md](README.md)。</sub>
+
 ## 安装
 
 **GitHub Release tarball（当前）**

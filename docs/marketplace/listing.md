@@ -15,10 +15,15 @@ Use this text in the `awesome-dsh-plugin` entry, the repository description, and
 
 ## Storefront screenshots (order matters)
 
-1. **`01-overview.png`** — “Click any image, get a viewer that fits it to the window.”
-2. **`02-detail.png`** — “Zoom to 260% at the pointer; the percentage is editable.”
-3. **`03-download.png`** — “Downloads arrive as `description-YYYYMMDD-HHmmss.ext`.”
-4. **`04-gallery.png`** — “`←` / `→` moves through the images in the conversation.”
+`screenshots.json` lists eight images: the **English set first**, then the **Chinese set** (the market allows 1–8).
+
+| # | File | Caption |
+| --- | --- | --- |
+| 1 | `assets/screenshots/en/01-overview.png` | “Click any image, get a viewer that fits it to the window.” |
+| 2 | `assets/screenshots/en/02-detail.png` | “Zoom to 260% at the pointer; the percentage is editable.” |
+| 3 | `assets/screenshots/en/03-download.png` | “Downloads arrive as `description-YYYYMMDD-HHmmss.ext`.” |
+| 4 | `assets/screenshots/en/04-gallery.png` | “`←` / `→` moves through the images in the conversation.” |
+| 5–8 | `assets/screenshots/01…04.png` | The same four scenes with Chinese UI copy, for Chinese readers. |
 
 ## Feature bullets (short form)
 
